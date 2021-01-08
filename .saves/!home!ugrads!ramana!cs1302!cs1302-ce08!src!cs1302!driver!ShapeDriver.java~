@@ -1,0 +1,13 @@
+package cs1302.driver;
+
+import cs1302.shapes.*;
+
+public class ShapeDriver {
+
+    public static void main(String[] args) {
+
+        Shape obj = new Ellipse(2,2);
+        double var = obj.getPerimeter();
+
+    } // main
+} // ShapeDriver

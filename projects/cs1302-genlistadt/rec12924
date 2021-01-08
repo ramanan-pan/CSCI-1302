@@ -1,0 +1,87 @@
+cs1302-genlistadt/:
+total 52
+drwxr-xr-x 3 ugrad  4096 Mar 21 16:18 bin
+-rwxr--r-- 1 ugrad   431 Mar 31 22:12 compile.sh
+drwxr-xr-x 3 ugrad  4096 Apr  3 22:00 doc
+drwxr-xr-x 2 ugrad  4096 Mar  2 21:39 lib
+-rw-r--r-- 1 ugrad 26043 Mar 21 14:41 README.md
+-rw-r--r-- 1 ugrad     0 Apr  3 22:18 rec12924
+-rw-r--r-- 1 ugrad  3152 Apr  3 22:08 rec62791
+drwxr-xr-x 3 ugrad  4096 Mar  2 21:40 src
+
+cs1302-genlistadt/bin:
+total 4
+drwxr-xr-x 5 ugrad 4096 Mar 22 15:04 cs1302
+
+cs1302-genlistadt/bin/cs1302:
+total 12
+drwxr-xr-x 2 ugrad 4096 Mar 26 14:28 genlist
+drwxr-xr-x 2 ugrad 4096 Mar 21 16:18 genlistadt
+drwxr-xr-x 2 ugrad 4096 Mar 22 15:04 utility
+
+cs1302-genlistadt/bin/cs1302/genlist:
+total 32
+-rw-r--r-- 1 ugrad  5228 Apr  3 22:13 BaseGenList.class
+-rw-r--r-- 1 ugrad   917 Apr  3 22:13 GenIterator.class
+-rw-r--r-- 1 ugrad  4009 Apr  3 22:13 LinkedGenList.class
+-rw-r--r-- 1 ugrad 11639 Apr  3 22:13 LinkedGenListTest.class
+-rw-r--r-- 1 ugrad  1100 Apr  3 22:13 Node.class
+
+cs1302-genlistadt/bin/cs1302/genlistadt:
+total 4
+-rw-r--r-- 1 ugrad 1127 Mar 21 16:43 Node.class
+
+cs1302-genlistadt/bin/cs1302/utility:
+total 4
+-rw-r--r-- 1 ugrad 917 Mar 22 15:22 GenIterator.class
+
+cs1302-genlistadt/doc:
+total 92
+-rw-r--r-- 1 ugrad  1131 Apr  3 22:16 allclasses-frame.html
+-rw-r--r-- 1 ugrad  1031 Apr  3 22:16 allclasses-noframe.html
+-rw-r--r-- 1 ugrad  3565 Apr  3 22:16 constant-values.html
+drwxr-xr-x 3 ugrad  4096 Apr  3 22:00 cs1302
+-rw-r--r-- 1 ugrad  3515 Apr  3 22:16 deprecated-list.html
+-rw-r--r-- 1 ugrad  7950 Apr  3 22:16 help-doc.html
+-rw-r--r-- 1 ugrad 28385 Apr  3 22:16 index-all.html
+-rw-r--r-- 1 ugrad  2788 Apr  3 22:16 index.html
+-rw-r--r-- 1 ugrad  5168 Apr  3 22:16 overview-tree.html
+-rw-r--r-- 1 ugrad    15 Apr  3 22:16 package-list
+-rw-r--r-- 1 ugrad   827 Apr  3 22:16 script.js
+-rw-r--r-- 1 ugrad 12842 Apr  3 22:00 stylesheet.css
+
+cs1302-genlistadt/doc/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr  3 22:00 genlist
+
+cs1302-genlistadt/doc/cs1302/genlist:
+total 164
+-rw-r--r-- 1 ugrad 61157 Apr  3 22:16 BaseGenList.html
+-rw-r--r-- 1 ugrad 14621 Apr  3 22:16 GenIterator.html
+-rw-r--r-- 1 ugrad 34234 Apr  3 22:16 LinkedGenList.html
+-rw-r--r-- 1 ugrad 14697 Apr  3 22:16 LinkedGenListTest.html
+-rw-r--r-- 1 ugrad 16352 Apr  3 22:16 Node.html
+-rw-r--r-- 1 ugrad  1194 Apr  3 22:16 package-frame.html
+-rw-r--r-- 1 ugrad  5823 Apr  3 22:16 package-summary.html
+-rw-r--r-- 1 ugrad  5183 Apr  3 22:16 package-tree.html
+
+cs1302-genlistadt/lib:
+total 4
+-rw-r--r-- 1 ugrad 1671 Mar  2 21:39 genlistadt.jar
+
+cs1302-genlistadt/src:
+total 4
+drwxr-xr-x 3 ugrad 4096 Mar 25 18:05 cs1302
+
+cs1302-genlistadt/src/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr  3 22:12 genlist
+
+cs1302-genlistadt/src/cs1302/genlist:
+total 44
+-rw-r--r-- 1 ugrad 10969 Apr  3 22:12 BaseGenList.java
+-rw-r--r-- 1 ugrad  1189 Mar 31 22:32 GenIterator.java
+-rw-r--r-- 1 ugrad  7540 Mar 31 23:05 LinkedGenList.java
+-rw-r--r-- 1 ugrad 12404 Apr  3 22:12 LinkedGenListTest.java
+-rw-r--r-- 1 ugrad  2017 Apr  2 16:14 Node.java
+/home/ugrads/ramana/projects/cs1302-genlistadt/:/home/work/cs1302a

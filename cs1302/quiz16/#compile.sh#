@@ -1,0 +1,2 @@
+#!/bin/bash -ex
+javac -d bin src/cs1302/quiz/Example.java

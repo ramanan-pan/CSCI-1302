@@ -1,0 +1,2 @@
+Extra Credit 1 (5 points): Add a "Help" meny to the menu bar that contains an "About" item. The "About" item should display and information stage
+                            with an image of yourself, name, email, and version number for the app.

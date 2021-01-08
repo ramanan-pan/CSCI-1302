@@ -1,0 +1,584 @@
+package cs1302.list;
+
+import cs1302.listadt.StringList;
+
+/**
+ * This class tests the {@code AbstractStringList} class, which implements
+ * the {@code StringList} interface, and its child classes {@code ArrayStringList}
+ * and {@code LinkedStringList}.
+ */
+public class Driver {
+    private static StringList a = new ArrayStringList();
+    private static StringList b = new LinkedStringList();
+
+    public static void main(String[] args) {
+        System.out.println("\nMETHOD FUNCTIONALITY TESTS:");
+
+        System.out.println("\nArrayStringList Test");
+        testMakeString();
+        testAdd();
+        testAddIndex();
+        testAppendList();
+        testSecondConstructor();
+        testAppendListIndex();
+        testSize();
+        testClear();
+        testContains();
+        testContainsIgnore();
+        testSubstring();
+        testGet();
+        testIndexOf();
+        testIndexOfIgnore();
+        testEmpty();
+        testReverse();
+        testSet();
+        testSplice();
+        testDistinct();
+
+        System.out.println("\nLinkedStringList Test:");
+        testLMakeString();
+        testLAdd();
+        testLAddIndex();
+        testLAppendList();
+        testLSecondConstructor();
+        testLAppendListIndex();
+        testLSize();
+        testLClear();
+        testLContains();
+        testLContainsIgnore();
+        testLSubstring();
+        testLGet();
+        testLIndexOf();
+        testLIndexOfIgnore();
+        testLEmpty();
+        testLReverse();
+        testLSet();
+        testLSplice();
+        testLDistinct();
+
+    } // main
+
+    /**
+     * resets {@code a}.
+     */
+    private static void resetA() {
+        a = new ArrayStringList();
+        a.add("zero");
+        a.add("one");
+        a.add("two");
+        a.add("three");
+        a.add("four");
+        a.add("five");
+    } //resetA
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testMakeString() {
+        resetA();
+        System.out.print("makeString(\" \")\t\t\t Test: ");
+        check(a.makeString(" "),"zero one two three four five");
+    } //testMakeString
+
+    /**
+     * tests {@code testAdd}.
+     */
+    private static void testAdd() {
+        resetA();
+        System.out.print("add(String s)\t\t\t Test: ");
+        String pass = "zero one two three four five";
+        check(a.makeString(" "), pass);
+    } // testAdd
+
+    /**
+     * tests {@code testAddIndex}.
+     */
+    private static void testAddIndex() {
+        System.out.print("add(int index, StringList s1)\t Test: ");
+        resetA();
+        a.add(0,"-1");
+        a.add(2,"0.5");
+        a.add(8,"six");
+        String pass = "-1 zero 0.5 one two three four five six";
+        check(a.makeString(" "), pass);
+    } // testAddIndex
+
+    /**
+     * tests {@code testAddIndex}.
+     */
+    private static void testAppendList() {
+        System.out.print("add(StringList s1)\t\t Test: ");
+        resetA();
+        a.add(a);
+        String pass = "zero one two three four five zero one two three four five";
+        check(a.makeString(" "), pass);
+    } // testAppendList
+
+    /**
+     * tests {@code testSecondConstructor}.
+     */
+    private static void testSecondConstructor() {
+        System.out.print("ArrayStringList(Stringlist s1)\t Test: ");
+        resetA();
+        StringList b = new ArrayStringList(a);
+        check(a.makeString(" "),b.makeString(" "));
+    } //testSecondConstructor
+
+    /**
+     * tests {@code testAppendListIndex}.
+     */
+    private static void testAppendListIndex() {
+        System.out.print("add(int index, StringList s1)\t Test: ");
+        resetA();
+        StringList b = new ArrayStringList(a);
+        a.add(0,b);
+        String pass = "zero one two three four five zero one two three four five";
+        check(a.makeString(" "),pass);
+        resetA();
+        System.out.print("add(int index, StringList s1)\t Test: ");
+        a.add(3,b);
+        pass = "zero one two zero one two three four five three four five";
+        check(a.makeString(" "),pass);
+        resetA();
+        System.out.print("add(int index, StringList s1)\t Test: ");
+        a.add(6,b);
+        pass = "zero one two three four five zero one two three four five";
+        check(a.makeString(" "),pass);
+    } // testAppendListIndex
+
+    /**
+     * tests {@code testSize}.
+     */
+    private static void testSize() {
+        System.out.print("size()\t\t\t\t Test: ");
+        resetA();
+        if (a.size() == 6) {
+
+            System.out.println("PASS");
+        } else {
+            System.out.print(a.size());
+            System.out.println("FAIL");
+        }
+    } //testSize
+
+    /**
+     * tests {@code testClear}.
+     */
+    private static void testClear() {
+        System.out.print("clear()\t\t\t\t Test: ");
+        resetA();
+        a.clear();
+        if (a.size() == 0) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+        } // if
+    } //testClear
+
+    /**
+     * tests {@code testContains}.
+     */
+    private static void testContains() {
+        System.out.print("contains(String o)\t\t Test: ");
+        resetA();
+        check(a.contains("three"));
+    } //testContains
+
+    /**
+     * tests {@code testsContainsIgnore}.
+     */
+    private static void testContainsIgnore() {
+        System.out.print("contains(String o)\t\t Test: ");
+        resetA();
+        check(a.containsIgnoreCase("Three"));
+    } //testContainsIgnore
+
+    /**
+     * tests {@code testSubstring}.
+     */
+    private static void testSubstring() {
+        System.out.print("containsSubstring(String o)\t Test: ");
+        resetA();
+        check(a.containsSubstring("ee"));
+    } //testSubstring
+
+    /**
+     * tests {@code testGet}.
+     */
+    private static void testGet() {
+        System.out.print("get()\t\t\t\t Test: ");
+        resetA();
+        check("two",a.get(2));
+    } //testGet
+
+    /**
+     * tests {@code testIndexOf}.
+     */
+    private static void testIndexOf() {
+        System.out.print("indexOf(String s)\t\t Test: ");
+        resetA();
+        if (a.indexOf("three") == 3) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+        } // if
+    } //testIndexOf
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testIndexOfIgnore() {
+        System.out.print("indexOfIgnoreCase(String s)\t Test: ");
+        resetA();
+        if (a.indexOfIgnoreCase("Three") == 3) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+        } // if
+    } //testIndexOf
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testEmpty() {
+        a.clear();
+        System.out.print("isEmpty()\t\t\t Test: ");
+        if (a.size() == 0) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+        } // if
+    } //testEmpty
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testReverse() {
+        resetA();
+        System.out.print("reverse()\t\t\t Test: ");
+        StringList b = a.reverse();
+        check(b.makeString(" "),"five four three two one zero");
+    } //testReverse
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testSet() {
+        resetA();
+        System.out.print("set(int index, String s)\t Test: ");
+        a.set(5,"FIVE");
+        check(a.makeString(" "), "zero one two three four FIVE");
+    } //testSet
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testSplice() {
+        resetA();
+        System.out.print("splice(int fromIndex, int toIndex)Test:");
+        StringList b = a.splice(2,6);
+        check(b.makeString(" "), "two three four five");
+        System.out.print("splice(int fromIndex, int toIndex)Test:");
+        check(a.makeString(" "), "zero one two three four five");
+        System.out.print("splice(int fromIndex, int toIndex)Test:");
+        b = a.splice(3,3);
+        check(b.makeString(" "),"");
+    } //testSplice
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testDistinct() {
+        System.out.print("distinct()\t\t\t Test: ");
+        StringList a = new ArrayStringList();
+        a.add("zero");
+        a.add("zero");
+        a.add("zero");
+        a.add("one");
+        a.add("two");
+        a.add("two");
+        a.add("one");
+        StringList b = a.distinct();
+        check(b.makeString(" "), "zero one two");
+        System.out.print("distinct()\t\t\t Test: ");
+        check(a.makeString(" "), "zero zero zero one two two one");
+    } //testDistinct
+
+    /**
+     * tests {@code MakeString}.
+     * @param a boolean.
+     */
+    private static void check(boolean a) {
+        if (a) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+        } // if
+    } // check
+
+    /**
+     * tests {@code MakeString}.
+     * @param list what the list is
+     * @param answer what the list should be
+     */
+    private static void check(String list,String answer) {
+        if (list.equals(answer)) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+        } // of
+    } // check
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void resetB() {
+        b = new LinkedStringList();
+        b.add("zero");
+        b.add("one");
+        b.add("two");
+        b.add("three");
+        b.add("four");
+        b.add("five");
+    } //resetB
+     /**
+     *{@code LinkedListStuff}
+     * THIS STARTS THE LINKEDLISTNODE PRIVATE METHOD TESTS.
+     */
+    private static void testLMakeString() {
+        resetB();
+        System.out.print("makeString(\" \")\t\t\t Test: ");
+        check(b.makeString(" "),"zero one two three four five");
+    } //testMakeString
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLAdd() {
+        resetB();
+        System.out.print("add(String s)\t\t\t Test: ");
+        String pass = "zero one two three four five";
+        check(b.makeString(" "), pass);
+    } // testAdd
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLAddIndex() {
+        System.out.print("add(int index, String s)\t Test: ");
+        resetB();
+        b.add(0,"-1");
+        b.add(2,"0.5");
+        b.add(8,"six");
+        String pass = "-1 zero 0.5 one two three four five six";
+        check(b.makeString(" "), pass);
+    } // testAddIndex
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLAppendList() {
+        System.out.print("add(StringList s1)\t\t Test: ");
+        resetB();
+        b.add(b);
+        String pass = "zero one two three four five zero one two three four five";
+        check(b.makeString(" "), pass);
+    } // testAppendList
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLSecondConstructor() {
+        System.out.print("LinkedStringList(Stringlist s1)\t Test: ");
+        resetB();
+        StringList a = new LinkedStringList(b);
+        check(b.makeString(" "),a.makeString(" "));
+    } //testSecondConstructor
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLAppendListIndex() {
+        System.out.print("add(int index, StringList s1)\t Test: ");
+        resetB();
+        StringList a = new ArrayStringList(b);
+        b.add(0,a);
+        String pass = "zero one two three four five zero one two three four five";
+        check(b.makeString(" "),pass);
+        resetB();
+        System.out.print("add(int index, StringList s1)\t Test: ");
+        b.add(3,a);
+        pass = "zero one two zero one two three four five three four five";
+        check(b.makeString(" "),pass);
+        resetB();
+        System.out.print("add(int index, StringList s1)\t Test: ");
+        b.add(6,a);
+        pass = "zero one two three four five zero one two three four five";
+        check(b.makeString(" "),pass);
+    } // testAppendListIndex
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLSize() {
+        System.out.print("size()\t\t\t\t Test: ");
+        resetB();
+        if (b.size() == 6) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+        }
+    } //testSize
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLClear() {
+        System.out.print("clear()\t\t\t\t Test: ");
+        resetB();
+        b.clear();
+        if (b.size() == 0) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+        } // if
+    } //testClear
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLContains() {
+        System.out.print("contains(String o)\t\t Test: ");
+        resetB();
+        check(b.contains("three"));
+    } //testContains
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLContainsIgnore() {
+        System.out.print("contains(String o)\t\t Test: ");
+        resetB();
+        check(b.containsIgnoreCase("Three"));
+    } //testContainsIgnore
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLSubstring() {
+        System.out.print("containsSubstring(String o)\t Test: ");
+        resetB();
+        check(b.containsSubstring("ee"));
+    } //testSubstring
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLGet() {
+        System.out.print("get()\t\t\t\t Test: ");
+        resetB();
+        check("two",b.get(2));
+    } //testGet
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLIndexOf() {
+        System.out.print("indexOf(String s)\t\t Test: ");
+        resetB();
+        if (b.indexOf("three") == 3) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+        } // if
+    } //testIndexOf
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLIndexOfIgnore() {
+        System.out.print("indexOfIgnoreCase(String s)\t Test: ");
+        resetB();
+        if (b.indexOfIgnoreCase("Three") == 3) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+        } // if
+    } //testIndexOf
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLEmpty() {
+        b.clear();
+        System.out.print("isEmpty()\t\t\t Test: ");
+        if (b.size() == 0) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+        } // if
+    } //testEmpty
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLReverse() {
+        resetB();
+        System.out.print("reverse()\t\t\t Test: ");
+        StringList a = b.reverse();
+        check(a.makeString(" "),"five four three two one zero");
+    } //testReverse
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLSet() {
+        resetB();
+        System.out.print("set(int index, String s)\t Test: ");
+        b.set(5,"FIVE");
+        check(b.makeString(" "), "zero one two three four FIVE");
+    } //testSet
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLSplice() {
+        resetB();
+        System.out.print("splice(int fromIndex, int toIndex)Test:");
+        StringList a = b.splice(2,6);
+        check(a.makeString(" "), "two three four five");
+        System.out.print("splice(int fromIndex, int toIndex)Test:");
+        check(b.makeString(" "), "zero one two three four five");
+        System.out.print("splice(int fromIndex, int toIndex)Test:");
+        b = a.splice(3,3);
+        check(b.makeString(" "),"");
+    } //testSplice
+
+    /**
+     * tests {@code MakeString}.
+     */
+    private static void testLDistinct() {
+        System.out.print("distinct()\t\t\t Test: ");
+        StringList b = new LinkedStringList();
+        b.add("zero");
+        b.add("zero");
+        b.add("zero");
+        b.add("one");
+        b.add("two");
+        b.add("two");
+        b.add("one");
+        StringList a = b.distinct();
+        check(a.makeString(" "), "zero one two");
+        System.out.print("distinct()\t\t\t Test: ");
+        check(b.makeString(" "), "zero zero zero one two two one");
+    } //testDistinct
+
+    /**
+     * tests {@code MakeString}.
+     * @param a Stringlist that wants to be printed.
+     */
+    private static void print(StringList a) {
+        System.out.println( a.makeString(" "));
+    } // print
+
+} // Driver

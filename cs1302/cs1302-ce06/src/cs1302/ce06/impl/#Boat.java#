@@ -1,0 +1,73 @@
+package cs1302.ce06.impl;
+
+import cs1302.ce06.contract.Drivable;
+
+/**
+ * This class represents a car. It implements
+ * the {@link cs1302.ce06.contract.Drivable} interface.
+ *
+ */
+public class Boat implements Drivable {
+    private double speed; // in mph
+    private double maxSpeed; // in mph
+
+
+    /**
+     * Constructs a {@code Boat} object with a specified
+     * maximum speed. The maximum speed of the object
+     * will default to zero if a negative value is given.
+     * @param maxSpeed the maximum speed of the {@code Boat}
+     */
+    public Boat(double maxSpeed) {
+        speed = 0;
+        if (maxSpeed >= 0) {
+            this.maxSpeed = maxSpeed;
+        } // if
+    } // Boat
+
+    /**
+     * {@inheritDoc}
+     */
+    public boolean speedUp(double amount) {
+        boolean success = false;
+        if (speed + amount <= maxSpeed) {
+            speed += amount;
+            success = true;
+        } // if
+        return success;
+    } // speedUp
+
+    /**
+     * {@inheritDoc}
+     */
+    public boolean slowDown(double amount) {
+        boolean success = false;
+        if (speed - amount >= 0) {
+            speed -= amount;
+            success = true;
+        }
+        return success;
+    } // slowDown
+
+    /**
+     * {@inheritDoc}
+     */
+    public boolean stop(boolean inMotion) {
+        boolean success = false;
+        if (inMotion = true) {
+            speed = 0;
+            success = true;
+        }
+        return success;
+    } // slowDown
+
+    /**
+     * Returns a {@code String} representation of this {@code Boat}
+     * in the format Boat(speed: speed, maxspeed: maxSpeed).
+     *
+     * @return the {@code String} representation of this object.
+     */
+    public String toString() {
+        return String.format("Boat(speed: %.2f, maxspeed: %.2f)", speed, maxSpeed);
+    }
+} // Boat

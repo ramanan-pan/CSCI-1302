@@ -1,0 +1,36 @@
+cs1302-ce21:
+total 24
+drwxr-xr-x 3 ugrad  4096 Apr 11 20:24 bin
+-rw-r--r-- 1 ugrad 10784 Apr 11 18:27 README.md
+-rw-r--r-- 1 ugrad     0 Apr 11 20:25 rec44591
+drwxr-xr-x 3 ugrad  4096 Apr 11 18:28 src
+-rw-r--r-- 1 ugrad    86 Apr 11 20:24 SUBMISSION.md
+
+cs1302-ce21/bin:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 11 20:24 cs1302
+
+cs1302-ce21/bin/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 11 20:24 ce21
+
+cs1302-ce21/bin/cs1302/ce21:
+total 12
+-rw-r--r-- 1 ugrad 1386 Apr 11 20:24 ImageApp.class
+-rw-r--r-- 1 ugrad  767 Apr 11 20:24 ImageDriver.class
+-rw-r--r-- 1 ugrad 2642 Apr 11 20:24 ImageLoader.class
+
+cs1302-ce21/src:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 11 18:28 cs1302
+
+cs1302-ce21/src/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 11 20:24 ce21
+
+cs1302-ce21/src/cs1302/ce21:
+total 12
+-rw-r--r-- 1 ugrad 1332 Apr 11 20:24 ImageApp.java
+-rw-r--r-- 1 ugrad  595 Apr 11 18:38 ImageDriver.java
+-rw-r--r-- 1 ugrad 2962 Apr 11 20:24 ImageLoader.java
+/home/ugrads/ramana/cs1302/cs1302-ce21:/home/work/cs1302a

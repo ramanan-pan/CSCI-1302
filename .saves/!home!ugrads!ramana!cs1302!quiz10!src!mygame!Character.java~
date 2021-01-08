@@ -1,0 +1,11 @@
+package mygame;
+
+public class Character extends GameObject {
+    private String name;
+    private int hp;
+
+    public Character(String name) {
+        this.name = name;
+
+    }
+}

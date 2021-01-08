@@ -1,0 +1,48 @@
+package cs1302.utility;
+
+import java.util.Iterator;
+import cs1302.genlistadt.GenList;
+import cs1302.genlist.*;
+
+/**
+ *
+ */
+public class GenIterator<T> implements Iterator<T> {
+
+    /***/
+    GenList<T> list;
+
+    /***/
+    int index;
+
+    /**
+     *
+     */
+    public GenIterator(GenList<T> list) {
+        this.list = list;
+        this.index = 0;
+    } // GenIterator
+
+    /**
+     *
+     */
+    public boolean hasNext() {
+        if (index < list.size()) {
+            return true;
+        } // if
+        return false;
+    } // hasNext
+
+    /**
+     *
+     */
+    public T next() {
+        T next;
+        if (this.hasNext()) {
+            next = list.get(index);
+            index++;
+        } // if
+        return next;
+    } // next
+
+} // GenIterator

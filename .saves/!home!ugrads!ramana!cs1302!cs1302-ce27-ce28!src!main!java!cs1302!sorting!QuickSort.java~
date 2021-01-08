@@ -1,0 +1,74 @@
+package cs1302.sorting;
+
+import java.util.Comparator;
+import java.util.Arrays;
+
+/**
+ * Represents an implementation of the quick sort algorithm.
+ */
+public class QuickSort {
+
+    public static void main(String[] args) {
+
+        System.out.println("Array 1 (Integer):");
+        Integer[] array1 = {1, 3, 2, 4, 5};
+        System.out.println(Arrays.toString(array1));
+        int newPivot1 = partition(array1, 0, 1, 4, Integer::compareTo);
+        System.out.println("pivot: 1, hi: 4, lo: 0");
+        System.out.println(Arrays.toString(array1));
+        System.out.println("new pivot: " + newPivot1);
+
+        System.out.println("Array 2 (Double):");
+        Double[] array2 = {309.23, 21.827, 100.0, 51.1, 4.5};
+        System.out.println(Arrays.toString(array2));
+        int newPivot2 = partition(array2, 0, 2, 4, Double::compareTo);
+        System.out.println("pivot: 2, hi: 4, lo: 0");
+        System.out.println(Arrays.toString(array2));
+        System.out.println("new pivot: " + newPivot2);
+
+        System.out.println("Array 3 (String):");
+        String[] array3 = {"hi", "my", "name", "is", "albert"};
+        System.out.println(Arrays.toString(array3));
+        int newPivot3 = partition(array3, 1, 3, 4, String::compareTo);
+        System.out.println("pivot: 3, hi: 4, lo: 1");
+        System.out.println(Arrays.toString(array3));
+        System.out.println("new pivot: " + newPivot3);
+    } // main
+
+    /**
+     * Selects the minimum in an array and swaps it with the lowest index.
+     *
+     * @param array array to be sorted
+     * @param lo starting index position
+     * @param hi ending index position
+     * @param c Comparator object used for comparisons
+     * @param <T> type of array
+     */
+    public static <T> int partition(T[] array, int lo, int pivot, int hi, Comparator<T> c) {
+        swap(array, pivot, hi);
+        int i = lo;
+        for (int j = lo; j < hi; j++) {
+            if (c.compare(array[j], array[hi]) < 0) {
+                swap(array, i, j);
+                i += 1;
+            } // if
+        } // for
+        swap(array, i, hi);
+        return i;
+    } // partition
+
+    /**
+     * Swaps the values of two index positions in an array.
+     *
+     * @param array array in which objects need to be swapped
+     * @param i1 first object
+     * @param i2 second object
+     * @param <T> type of array
+     */
+    public static <T> void swap(T[] array, int i1, int i2) {
+        T hold = array[i2];
+        array[i2] = array[i1];
+        array[i1] = hold;
+    } // swap
+
+} // QuickSort

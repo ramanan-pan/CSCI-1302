@@ -1,0 +1,74 @@
+cs1302-ce26:
+total 28
+-rwxr--r-- 1 ugrad   93 Apr 26 10:16 compile.sh
+-rw-r--r-- 1 ugrad 2657 Apr 25 12:54 pom.xml
+-rw-r--r-- 1 ugrad 6906 Apr 25 12:54 README.md
+-rw-r--r-- 1 ugrad    0 Apr 26 14:53 rec67868
+drwxr-xr-x 3 ugrad 4096 Apr 25 12:54 src
+-rw-r--r-- 1 ugrad   91 Apr 26 14:51 SUBMISSION.md
+drwxr-xr-x 5 ugrad 4096 Apr 26 14:49 target
+
+cs1302-ce26/src:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 25 12:54 main
+
+cs1302-ce26/src/main:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 25 12:54 java
+
+cs1302-ce26/src/main/java:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 25 12:54 cs1302
+
+cs1302-ce26/src/main/java/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 26 14:49 ce26
+
+cs1302-ce26/src/main/java/cs1302/ce26:
+total 16
+-rw-r--r-- 1 ugrad 4256 Apr 26 14:49 TTTSolver.java
+-rw-r--r-- 1 ugrad 5363 Apr 26 10:24 TTTUtility.java
+
+cs1302-ce26/target:
+total 12
+drwxr-xr-x 3 ugrad 4096 Apr 26 14:49 classes
+drwxr-xr-x 3 ugrad 4096 Apr 26 14:49 generated-sources
+drwxr-xr-x 3 ugrad 4096 Apr 26 14:49 maven-status
+
+cs1302-ce26/target/classes:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 26 14:49 cs1302
+
+cs1302-ce26/target/classes/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 26 14:49 ce26
+
+cs1302-ce26/target/classes/cs1302/ce26:
+total 8
+-rw-r--r-- 1 ugrad 3095 Apr 26 14:49 TTTSolver.class
+-rw-r--r-- 1 ugrad 1861 Apr 26 14:49 TTTUtility.class
+
+cs1302-ce26/target/generated-sources:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 26 14:49 annotations
+
+cs1302-ce26/target/generated-sources/annotations:
+total 0
+
+cs1302-ce26/target/maven-status:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 26 14:49 maven-compiler-plugin
+
+cs1302-ce26/target/maven-status/maven-compiler-plugin:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 26 14:49 compile
+
+cs1302-ce26/target/maven-status/maven-compiler-plugin/compile:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 26 14:49 default-compile
+
+cs1302-ce26/target/maven-status/maven-compiler-plugin/compile/default-compile:
+total 8
+-rw-r--r-- 1 ugrad  57 Apr 26 14:49 createdFiles.lst
+-rw-r--r-- 1 ugrad 161 Apr 26 14:49 inputFiles.lst
+/home/ugrads/ramana/cs1302/cs1302-ce26:/home/work/cs1302a

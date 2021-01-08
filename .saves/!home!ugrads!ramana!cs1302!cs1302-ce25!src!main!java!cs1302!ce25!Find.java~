@@ -1,0 +1,24 @@
+package cs1302.ce25;
+
+import java.io.File;
+import java.util.List;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.stream.Stream;
+
+
+public class Find {
+
+    public static void printFile(File file) {
+        // TODO implement printFile
+    } // printFile
+
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            args = new String[] { "." }; // default to "."
+        } // if
+        Arrays.stream(args).forEach(System.out::println);
+        // TODO implement stream code
+    } // main
+
+} // Find

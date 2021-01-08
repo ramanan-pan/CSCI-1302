@@ -1,0 +1,97 @@
+package cs1302.timestream;
+
+import java.time.LocalDate;
+import java.time.Year;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.stream.Stream;
+
+/**
+ * Stream Examples using {@code java.time}.
+ */
+public class TimeStreamDriver {
+
+    public static void main(String[] args) {
+
+        String[] stringArray = new String[]
+            {"1234", "12", "4567", "101", "7"};
+        List<String> myStrings = new ArrayList<String>();
+        myStrings.add("123455");
+        myStrings.add("1Z");
+        myStrings.add("4XZ7");
+        myStrings.add("10dadsa1");
+        myStrings.add("s");
+        /*
+        int result = 0;
+        int tempValue;
+        for(String s: myStrings) {
+            tempValue = Integer.parseInt(s);
+            if(tempValue > 99) {
+                result += tempValue;
+            } // if
+        } // for
+        System.out.println(result);
+        */
+
+        int sum = myStrings.stream()
+            .filter(s -> s.length() < 5)
+            .filter(s -> !(s.contains("X") || s.contains("Z")))
+            .map(String::length)
+            .reduce(0, (x,y) -> x + y);
+        System.out.println(sum);
+
+        /*
+        LocalDate[] dates = randomDates(10);
+        banner("Original Dates");
+        Arrays
+            .stream(dates)
+            .forEach(System.out::println);
+
+        banner("Original Dates After Year 2000");
+        LocalDate year2000 = LocalDate.of(2000, 1, 1);
+        Arrays
+            .stream(dates)
+            .filter(year2000::isBefore)
+            .forEach(System.out::println);
+
+        banner("Original Dates After Year 2000 as Years");
+        Arrays
+            .stream(dates)
+            .filter(year2000::isBefore)
+            .map(LocalDate::getYear)
+            .forEach(System.out::println);
+
+        banner("Original Dates After Year 2000 as Years as Strings");
+        Arrays
+            .stream(dates)
+            .filter(year2000::isBefore)
+            .map(LocalDate::getYear)
+            .map(year -> String.format("The year is %d", year))
+            .forEach(System.out::println);
+
+        banner("Sum of Original Dates After Year 2000 as Years");
+        int sum = Arrays
+            .stream(dates)
+            .filter(year2000::isBefore)
+            .map(LocalDate::getYear)
+            .reduce(0, Integer::sum);
+        System.out.println(sum);
+        */
+    } // main
+
+
+
+    public static LocalDate[] randomDates(long n) {
+        return Stream.<LocalDate>generate(Dates::random)
+            .limit(n)
+            .toArray(LocalDate[]::new);
+    } // randomDates
+
+
+
+    public static void banner(String str) {
+        System.out.printf("\n**** %s\n", str);
+    } // banner
+
+} // TimeStreamDriver

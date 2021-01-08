@@ -1,0 +1,717 @@
+package cs1302.list;
+
+import cs1302.listadt.StringList;
+import cs1302.listadt.StringList.Node;
+import java.util.Arrays;
+
+/** Test class for LinkedStringList. */
+public class DriverLinkedStringList {
+    /**Tests default constructor.*/
+    public static void test1() {
+        StringList list = new LinkedStringList();
+        assert list.size() == 0;
+    }
+
+    /**Tests copy constructor.*/
+    public static void test2() {
+        String msg = "";
+        StringList notValid = null;
+
+        try {
+            StringList list = new LinkedStringList(notValid);
+        } catch (NullPointerException e) {
+            msg = "Null value";
+        } //try-catch
+        assert msg.equals("Null value");
+
+        StringList list1 = new LinkedStringList();
+        StringList list2 = new LinkedStringList(list1);
+        assert list2.size() == 0;
+
+        String[] numbers = new String[20];
+        for (int i = 0; i < numbers.length; i++) {
+            list1.add(Integer.toString(i));
+            numbers[i] = Integer.toString(i);
+        } //for
+
+        StringList list3 = new LinkedStringList(list1);
+        String list3String = Arrays.toString(list3.toArray());
+        String numbersString = Arrays.toString(numbers);
+        assert list3String.equals(numbersString);
+        assert list3.size() == numbers.length;
+    } //test2
+
+    /** Tests boolean add(int, String).*/
+    public static void test3() {
+        String msg = "";
+        String notValid = null;
+        StringList list = new LinkedStringList();
+
+        try {
+            list.add(0, notValid);
+        } catch (NullPointerException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.add(0, "");
+        } catch (IllegalArgumentException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.add(-1, "HI");
+        } catch (IndexOutOfBoundsException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.add(list.size() + 1, "HI");
+        } catch (IndexOutOfBoundsException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        assert list.add(0, "A") == true;
+        assert list.add(1, "B") == true;
+        assert list.add(2, "C") == true;
+        list.add(0, "D");
+        assert list.makeString().equals("DABC");
+        list.add(list.size(), "E");
+        assert list.makeString().equals("DABCE");
+        list.add(2, "F");
+        assert list.makeString().equals("DAFBCE");
+    } //test3
+
+/** Tests add(int, StringList).*/
+    public static void test4() {
+        String msg = "";
+        StringList notValid = null;
+        StringList list = new LinkedStringList();
+        StringList list2 = new LinkedStringList();
+
+        try {
+            list.add(0, notValid);
+        } catch (NullPointerException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.add(-1, notValid);
+        } catch (NullPointerException e) {
+            msg = "error";
+        } catch (IndexOutOfBoundsException e) {
+            msg = "h";
+        }
+        assert msg.equals("error") | msg.equals("h");
+        msg = "";
+
+
+        try {
+            list.add(-1, list2);
+        } catch (IndexOutOfBoundsException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.add(list.size() + 1, list2);
+        } catch (IndexOutOfBoundsException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        assert list.add(0, list2) == false;
+
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        assert list.size() == 3;
+        list2.add("D");
+
+        assert list.add(0, list2) == true;
+        assert list.makeString().equals("DABC");
+        list.add(list.size(), list2);
+        assert list.makeString().equals("DABCD");
+        list.add(2, list2);
+        assert list.makeString().equals("DADBCD");
+        assert list.size() == 6;
+        StringList list3 = new LinkedStringList();
+        assert list.add(0, list3) == false;
+    } //test4
+
+/** Tests add(String).*/
+    public static void test5() {
+        String msg = "";
+        String notValid = null;
+        StringList list = new LinkedStringList();
+
+        try {
+            list.add(notValid);
+        } catch (NullPointerException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.add("");
+        } catch (IllegalArgumentException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        assert list.add("A") == true;
+        assert list.makeString().equals("A");
+        assert list.size() == 1;
+
+        list.add("B");
+        assert list.makeString().equals("AB");
+        assert list.size() == 2;
+    } //test5
+
+    /** Tests add(StringList).*/
+    public static void test6() {
+        String msg = "";
+        StringList notValid = null;
+        StringList list = new LinkedStringList();
+
+        try {
+            list.add(notValid);
+        } catch (NullPointerException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        StringList list2 = new LinkedStringList();
+        list2.add("A");
+        list2.add("B");
+        assert list2.add("C") == true;
+        assert list.add(list) == false;
+        assert list2.size() == 3;
+        list.add(list2);
+        assert list.makeString().equals("ABC");
+        assert list.size() == 3;
+
+        list.clear();
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        assert list.size() == 3;
+        list.add(list);
+        assert list.size() == 6;
+        assert list.makeString().equals("ABCABC");
+
+    } //test6
+
+    /** Tests clean() method.*/
+    public static void test7() {
+        StringList list = new LinkedStringList();
+        assert list.size() == 0;
+        for (int i = 0; i < 60; i++) {
+            list.add("A");
+        }
+        assert list.size() == 60;
+        list.clear();
+        assert list.size() == 0;
+    } //test7
+
+    /**Tests contains(String o).*/
+    public static void test8() {
+        String msg = "";
+        String notValid = null;
+        StringList list = new LinkedStringList();
+
+        try {
+            list.contains(notValid);
+        } catch (NullPointerException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.contains("");
+        } catch (IllegalArgumentException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        assert list.contains("A") == false;
+
+        for (int i = 0; i < 50; i++) {
+            list.add("A");
+            list.add("B");
+        }
+
+        assert list.size() == 100;
+
+        assert list.contains("A") == true;
+        assert list.contains("B") == true;
+        assert list.contains("C") == false;
+
+    } //test
+
+    /**Tests containsIgnoreCase(String o).*/
+    public static void test9() {
+        String msg = "";
+        String notValid = null;
+        StringList list = new LinkedStringList();
+
+        try {
+            list.containsIgnoreCase(notValid);
+        } catch (NullPointerException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.containsIgnoreCase("");
+        } catch (IllegalArgumentException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        assert list.containsIgnoreCase("A") == false;
+
+        for (int i = 0; i < 50; i++) {
+            list.add("A");
+            list.add("B");
+        }
+
+        assert list.containsIgnoreCase("a") == true;
+        assert list.containsIgnoreCase("b") == true;
+        assert list.containsIgnoreCase("c") == false;
+
+    } //test
+
+    /**Tests containsSubstring(String o).*/
+    public static void test10() {
+        String msg = "";
+        String notValid = null;
+        StringList list = new LinkedStringList();
+
+        try {
+            list.containsSubstring(notValid);
+        } catch (NullPointerException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.containsSubstring("");
+        } catch (IllegalArgumentException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        assert list.containsSubstring("HI") == false;
+
+        list.add("Java");
+        list.add("Python");
+        list.add("Carbon");
+        assert list.size() == 3;
+
+        assert list.containsSubstring("ava") == true;
+        assert list.containsSubstring("thon") == true;
+        assert list.containsSubstring("on") == true;
+        assert list.containsSubstring("CPP") == false;
+
+    } //test10
+
+    /** Tests distinct(). **/
+    public static void test11() {
+        StringList list = new LinkedStringList();
+        assert list.distinct().makeString().equals("");
+
+        for (int i = 0; i < 60; i++) {
+            list.add("A");
+            list.add("B");
+            list.add("C");
+            list.add("D");
+        }
+        assert list.size() == 240;
+        StringList test = list.distinct();
+
+        assert test.makeString().equals("ABCD");
+    } //test11
+
+    /** Tests get(index).*/
+    public static void test12() {
+        String msg = "";
+
+        StringList list = new LinkedStringList();
+
+        try {
+            list.get(-1);
+        } catch (IndexOutOfBoundsException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.get(list.size());
+        } catch (IndexOutOfBoundsException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        for (int i = 0; i < 61; i++) {
+            list.add(Integer.toString(i));
+        }
+        assert list.size() == 61;
+        assert list.get(50).equals("50");
+        assert list.get(0).equals("0");
+        assert list.get(60).equals("60");
+    } //test12
+
+    /** Test indexOf(String).*/
+    public static void test13() {
+        String msg = "";
+        String notValid = null;
+        StringList list = new LinkedStringList();
+
+        try {
+            list.indexOf(notValid);
+        } catch (NullPointerException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.indexOf("");
+        } catch (IllegalArgumentException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        for (int i = 0; i < 60; i++) {
+            list.add("A");
+            list.add("B");
+            list.add("C");
+        }
+        assert list.size() == 180;
+        assert list.indexOf("A") == 0;
+        assert list.indexOf("B") == 1;
+        assert list.indexOf("C") == 2;
+        assert list.indexOf("A") != 3;
+        assert list.indexOf("D") == -1;
+        assert list.indexOf("E") == -1;
+    }
+
+    /** Test indexOfIgnoreCase(String).*/
+    public static void test14() {
+        String msg = "";
+        String notValid = null;
+        StringList list = new LinkedStringList();
+
+        try {
+            list.indexOfIgnoreCase(notValid);
+        } catch (NullPointerException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.indexOfIgnoreCase("");
+        } catch (IllegalArgumentException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        for (int i = 0; i < 60; i++) {
+            list.add("A");
+            list.add("B");
+            list.add("C");
+        }
+        assert list.size() == 180;
+        assert list.indexOfIgnoreCase("A") == 0;
+        assert list.indexOfIgnoreCase("b") == 1;
+        assert list.indexOfIgnoreCase("c") == 2;
+        assert list.indexOfIgnoreCase("C") == 2;
+        assert list.indexOfIgnoreCase("a") != 3;
+        assert list.indexOfIgnoreCase("D") == -1;
+        assert list.indexOfIgnoreCase("E") == -1;
+    }
+
+    /** Tests isEmpty().*/
+    public static void test15() {
+        StringList list = new LinkedStringList();
+        assert list.isEmpty() == true;
+        for (int i = 0; i < 60; i++) {
+            list.add("A");
+            list.add("B");
+            list.add("C");
+        }
+        assert list.isEmpty() == false;
+        list.clear();
+        assert list.isEmpty() == true;
+    }
+
+    /** Tests makeString(String sep), makeString(String, String, String), makeString().*/
+    public static void test16() {
+        StringList list = new LinkedStringList();
+        assert list.makeString().equals("");
+        assert list.makeString(",").equals("");
+        assert list.makeString(",", "!", "D").equals(",D");
+
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        assert list.makeString(", ").equals("a, b, c");
+        assert list.makeString().equals("abc");
+        assert list.makeString("~", "!", "#").equals("~a!b!c#");
+    } //test16
+
+    /** Tests remove(int) method.*/
+    public static void test17() {
+        String msg = "";
+
+        StringList list = new LinkedStringList();
+
+        try {
+            list.remove(-1);
+        } catch (IndexOutOfBoundsException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.remove(list.size());
+        } catch (IndexOutOfBoundsException e) {
+            msg = "error";
+        }
+
+        try {
+            list.remove(0);
+        } catch (IndexOutOfBoundsException e) {
+            msg = "error";
+        }
+
+        for (int i = 0; i < 60; i++) {
+            list.add("A");
+            list.add("B");
+            list.add("C");
+            assert list.remove(0).equals("A");
+            assert list.remove(0).equals("B");
+            assert list.remove(0).equals("C");
+        }
+        assert list.size() == 0;
+    } //test17
+
+    /** Tests reverse method.*/
+    public static void test18() {
+        StringList list = new LinkedStringList();
+        assert list.reverse().makeString().equals("");
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        assert list.reverse().size() == 3;
+        assert list.reverse().makeString().equals("CBA");
+
+        list.clear();
+        assert list.size() == 0;
+
+        for (int i = 0; i < 60; i++) {
+            list.add("A");
+            list.add("B");
+            list.add("C");
+        }
+
+        String[] listString = list.toArray();
+        String[] reversed = new String[listString.length];
+
+        int counter1 = 0;
+        int counter2 = listString.length - 1;
+
+        while (counter1 != listString.length) {
+            reversed[counter1] = listString[counter2];
+            counter1++;
+            counter2--;
+        }
+        assert Arrays.toString(reversed).equals(Arrays.toString(list.reverse().toArray()));
+
+    } //test18
+
+    /** Tests set(int, String method).*/
+    public static void test19() {
+        String msg = "";
+        String notValid = null;
+        StringList list = new LinkedStringList();
+        list.add("A");
+
+        try {
+            list.set(0, notValid);
+        } catch (NullPointerException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.set(0, "");
+        } catch (IllegalArgumentException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.set(-1, "HI");
+        } catch (IndexOutOfBoundsException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.set(list.size(), "HI");
+        } catch (IndexOutOfBoundsException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        list.clear();
+
+        list.add("HELSDLS");
+        list.add("SDFJLKSFKLSDFJLSKDJFLSDLKFJSDF");
+        list.add("SDKFLSNLDNVKLSJDSDLKFJSF");
+        assert list.size() == 3;
+        list.set(0, "C");
+        list.set(1, "C");
+        list.set(2, "C");
+        assert list.size() == 3;
+        assert list.makeString().equals("CCC");
+    } //test19
+
+
+
+    /** Tests splice(int, int) method.*/
+    public static void test20() {
+        String msg = "";
+        String notValid = null;
+        StringList list = new LinkedStringList();
+        list.add("A");
+
+        try {
+            list.splice(-5, 0);
+        } catch (IndexOutOfBoundsException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        try {
+            list.splice(2, list.size());
+        } catch (IndexOutOfBoundsException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+        try {
+            list.splice(2, 1);
+        } catch (IndexOutOfBoundsException e) {
+            msg = "error";
+        }
+        assert msg.equals("error");
+        msg = "";
+
+        list.clear();
+        list.add("H");
+        assert list.splice(0, 1).get(0).equals("H");
+        list.add("E");
+        list.add("L");
+        list.add("L");
+        list.add("O");
+
+        StringList list2 = new LinkedStringList();
+        for (int i = 0; i < 5; i++) {
+            list2.add(list.splice(i, i + 1));
+        }
+        assert list2.size() == 5;
+        assert list2.makeString().equals("HELLO");
+    } //test20
+
+    /**Tests toArray() method.*/
+    public static void test21() {
+        StringList list = new LinkedStringList();
+        assert Arrays.toString(list.toArray()).equals("[]");
+        String[] k = new String[60];
+
+        for (int i = 0; i < 60; i++) {
+            list.add("A");
+            k[i] = "A";
+        }
+        assert list.size() == 60;
+        assert Arrays.toString(list.toArray()).equals(Arrays.toString(k));
+
+        StringList list2 = new LinkedStringList(list);
+        assert list2.size() == 60;
+        assert Arrays.toString(list2.toArray()).equals(Arrays.toString(k));
+
+    } //test21
+
+
+
+
+
+
+
+
+
+    public static void main(String[] args) {
+        test1();
+        test2();
+        test3();
+        test4();
+        test5();
+        test6();
+        test7();
+        test8();
+        test9();
+        test10();
+        test11();
+        test12();
+        test13();
+        test14();
+        test15();
+        test16();
+        // test17();
+        test18();
+        test19();
+        test20();
+        test21();
+        System.out.println("You have passed all the test in DriverLinkedString.java");
+
+
+
+
+    } // main
+
+} //Driver

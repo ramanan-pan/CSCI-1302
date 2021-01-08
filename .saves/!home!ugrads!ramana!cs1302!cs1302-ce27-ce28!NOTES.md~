@@ -1,0 +1,23 @@
+# Notes
+
+## Bubble Sort Algo
+
+```java
+void bubble(array, lo, hi, c) {
+    // REMEMBER, n = hi - lo + 1
+    for (int i = lo; i < hi; i++) {
+        if (c.compare(array[i], array[i + 1]) > 0) {
+            swap(array, i, i + 1);
+        } // if
+    } // for
+} // bubble
+```
+
+```java
+void bubbleSort(array, lo, hi, c)
+    // REMEMBER, n = hi - lo + 1
+    for (int i = hi; i > lo; i --) {
+        bubble(array, lo, i, c);
+    } // for
+} // bubble
+```

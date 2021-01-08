@@ -1,0 +1,2 @@
+Seed File Generator (5 points): Allows users to generate seed files that specify random, valid seed file configurations by
+                                specifying a --gen option to the driver class.

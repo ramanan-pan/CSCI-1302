@@ -1,0 +1,286 @@
+package cs1302.gallery;
+
+import com.google.gson.*;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.layout.HBox;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Priority;
+import java.net.URLEncoder;
+import java.net.URL;
+import java.io.InputStreamReader;
+import java.lang.Thread;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+import java.util.LinkedList;
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.animation.Animation.Status;
+import java.util.Random;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+
+/**
+ * Represents the tool bar component of the GalleryApp.
+ * This class extends {@code HBox}.
+ */
+public class ToolBar extends HBox {
+
+    /** Reference to {@code GalleryApp} object. */
+    GalleryApp app;
+
+    /** The {@code Button} object used to play/pause.*/
+    Button pause;
+
+    /** The {@code TextField} object for search queries. */
+    TextField search;
+
+    /** The {@code Button} object used to update images. */
+    Button update;
+
+    /** The {@code Text} object that denotes the {@code Textfield}. */
+    Text searchQuery;
+
+    /** The {@code List} object for downloaded image URLS. */
+    List<String> urlStrings;
+
+    /** The {@code List} object for currently showing image URLS. */
+    List<String> currentUrls;
+
+    /** The {@code Image} array that holds {@code Image} objects to add to the gallery. */
+    Image[] images;
+
+    /** The {@code Alert} object for the error message. */
+    Alert errorMessage;
+
+    /** The {@code Random} object used to pick images to shuffle. */
+    Random rand;
+
+    /**
+     * Constructs a {@code ToolBar} object.
+     *
+     * @param app reference to the {@code GalleryApp} object
+     */
+    public ToolBar(GalleryApp app) {
+        super(10);
+        this.app = app;
+
+        pause = new Button("Pause");
+
+        searchQuery = new Text("Search Query:");
+
+        search = new TextField("rock");
+
+        update = new Button("Update Images");
+
+        this.getChildren().addAll(pause, searchQuery, search, update);
+        this.setPadding(new Insets(10.0));
+        HBox.setHgrow(search, Priority.ALWAYS);
+        this.setAlignment(Pos.CENTER_LEFT);
+
+        // Instantiating list for image URLS shown in the gallery.
+        currentUrls = new LinkedList<String>();
+
+        images = new Image[20];
+
+        pause.setOnAction(e -> {
+            Thread task = new Thread(() -> playPause(e));
+            task.setDaemon(true);
+            task.start();
+        });
+
+        update.setOnAction(e -> {
+            Thread task = new Thread(() -> loadImages(e));
+            task.setDaemon(true);
+            task.start();
+        });
+
+        // Instantiating & configuring errorMessage
+        errorMessage =  new Alert(AlertType.ERROR);
+        errorMessage.setTitle("Gallery!");
+        errorMessage.setHeaderText("Error");
+        errorMessage.setContentText("Your search did not return enough images.");
+
+        rand = new Random();
+    } // ToolBar
+
+    /**
+     * Creates a list of image URLs given a search query.
+     *
+     * @param query the search term from the textfield
+     * @return the list object holding image urls
+     */
+    private List<String> getList(String query) {
+        List<String> rawList = new LinkedList<String>();
+        String sUrl = "https://itunes.apple.com/search?term=";
+        try {
+            sUrl += URLEncoder.encode(query, "UTF-8");
+            URL url = new URL(sUrl);
+            InputStreamReader reader = new InputStreamReader(url.openStream());
+            JsonElement je = JsonParser.parseReader(reader);
+            JsonObject root = je.getAsJsonObject();
+            JsonArray results = root.getAsJsonArray("results");
+            int numResults = results.size();
+
+            // Add non-null artwork image URLs to a list
+            for (int i = 0; i < results.size(); i ++) {
+                JsonObject result = results.get(i).getAsJsonObject();
+                JsonElement artUrl = result.get("artworkUrl100");
+                if (artUrl != null) {
+                    rawList.add(artUrl.getAsString());
+                } // if
+            } // for
+        } catch (UnsupportedEncodingException uee) {
+            System.err.println(uee);
+            System.exit(1);
+        } catch (MalformedURLException murle) {
+            System.err.println(murle);
+            System.exit(1);
+        } catch (IOException ioe) {
+            System.err.println(ioe);
+            System.exit(1);
+        } // catch
+
+        // Adding only the distinct elements in rawList to list
+        List<String> list = rawList.stream()
+            .distinct()
+            .collect(Collectors.toList());
+
+        return list;
+    } // getList
+
+    /**
+     * Loads images using the supplied query to the gallery.
+     * Called when the update button is pressed.
+     *
+     * @param ae {@code ActionEvent} object
+     */
+    private void loadImages(ActionEvent ae) {
+        List<String> list = getList(search.getText());
+
+        if (list.size() < 21) { // not enough images
+            Platform.runLater(() -> errorMessage.showAndWait());
+        } else {
+            this.urlStrings = list;
+
+            currentUrls.clear();
+            for (int i = 0; i < 20; i ++) {
+                currentUrls.add(urlStrings.get(i)); // add images to currentUrls list
+            } // for
+
+            updateProg(0.0);
+            for (int i = 0; i < 20; i ++) {
+                Image img = new Image(urlStrings.get(i));
+                updateProg(1.0 * i / 20);
+                images[i] = img;
+            } // for
+            updateProg(1.0);
+
+            for (int i = 0; i < 20; i ++) {
+                addImg(i, images[i]);
+            } // for
+        } // if
+    } // loadImages
+
+    /**
+     * Updates the {@code ProgressBar} object.
+     * Called by the {@link #loadImages(ActionEvent)} method.
+     *
+     * @param n value that the {@code ProgressBar} object's progress should be set to.
+     */
+    private void updateProg(final double n) {
+        app.getPG().setProgress(n);
+    } // setProgress
+
+    /**
+     * Sets the image for an {@code ImageView} object in the {@code GalleryPlane}.
+     * Called by the {@link #loadImages(ActionEvent)} method.
+     *
+     * @param i the index to determine for which {@code ImageView} object to set the image
+     * @param img the {@code Image} object
+     */
+    private void addImg(final int i, final Image img) {
+        Platform.runLater(() -> app.getGP().setImg(i, img));
+    } // addImg
+
+    /**
+     * Loads images using the supplied query to the gallery.
+     * Called to initially populate gallery.
+     */
+    public void loadImages() {
+        currentUrls.clear();
+        this.urlStrings = getList(search.getText());
+
+        for (int i = 0; i < 20; i ++) {
+            currentUrls.add(urlStrings.get(i)); // add images to currentUrls list
+        } // for
+
+        updateProg(0.0);
+        for (int i = 0; i < 20; i ++) {
+            Image img = new Image(urlStrings.get(i));
+            updateProg(1.0 * i / 20);
+            images[i] = img;
+        } // for
+        updateProg(1.0);
+
+        for (int i = 0; i < 20; i ++) {
+            addImg(i, images[i]);
+        } // for
+    } // loadImages
+
+
+    /**
+     * Updates the play/pause button and stops/starts the timeline shuffling images.
+     *
+     * @param ae {@code ActionEvent} object
+     */
+    private void playPause(ActionEvent ae) {
+        if (app.getTL().getStatus() == Status.RUNNING) {
+            app.getTL().pause();
+            Platform.runLater(() -> pause.setText("  Play  "));
+        } else {
+            app.getTL().play();
+            Platform.runLater(() -> pause.setText("Pause"));
+        } // if
+    } // playPause
+
+    /**
+     * Randomly replaces an image currently displayed with a search result that is not displayed.
+     *
+     * @param ae (@code ActionEvent} object
+     */
+    public void randomReplace(ActionEvent ae) {
+        boolean notReplaceable = true;
+        String newUrl = "";
+        int i = 0;
+
+        while (notReplaceable) { // until it finds an image not currently displayed
+            i = rand.nextInt(urlStrings.size());
+            newUrl = this.urlStrings.get(i);
+            if (!currentUrls.contains(newUrl)) {
+                notReplaceable = false;
+            } // if
+        } // while
+
+        // switches the urls between urlStrings list and currentUrls list
+        int currentIndex = rand.nextInt(20);
+        String hold = currentUrls.get(currentIndex);
+        currentUrls.set(currentIndex, newUrl);
+        urlStrings.set(i, hold);
+
+        // updates the image
+        Image img = new Image(newUrl);
+        addImg(currentIndex, img);
+    } // randomReplace
+
+} // ToolBar

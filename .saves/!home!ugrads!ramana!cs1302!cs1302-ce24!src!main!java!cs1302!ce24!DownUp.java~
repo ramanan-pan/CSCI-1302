@@ -1,0 +1,19 @@
+package cs1302.ce24;
+
+public class DownUp {
+
+    public static void main(String[] args) {
+        downUp("Dawgs");
+    } // main
+
+    public static void downUp(String str) {
+        if (str.length() <= 1) {
+            System.out.println(str);
+        } else {
+            System.out.println(str);
+            downUp(str.substring(0, str.length() - 1));
+            System.out.println(str);
+        } // if
+    } // downUp
+
+} // DownUp

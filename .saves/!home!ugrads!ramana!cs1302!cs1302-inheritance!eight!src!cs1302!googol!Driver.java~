@@ -1,0 +1,13 @@
+package cs1302.googol;
+import cs1302.Product;
+import cs1302.amazeon.Book;
+
+public class Driver {
+    public static void main(String[] args) {
+        // TechBook d = new TechBook(2, "Gates", false);
+        // System.out.println(d.getId());
+
+        Book b = new Book(3, "Hawking");
+        System.out.println(b.getId());
+    } // main
+} // Driver

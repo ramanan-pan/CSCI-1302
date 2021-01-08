@@ -1,0 +1,40 @@
+package cs1302.genlistadt;
+
+public static class GenList.Node<T> extends Object {
+
+    private T contents;
+
+    private GenList.Node next;
+
+    public Node() {
+        contents = null;
+        next = null;
+    } // GenList.Node
+
+    public Node(T contents) {
+        this.contents = contents;
+        next = null;
+    } // GenList.Node
+
+    public Node(T contents, GenList.Node next) {
+        this.contents = contents;
+        this.next = next;
+    } // GenList.Node
+
+    public T getContents() {
+        return contents;
+    } // getContents
+
+    public void setContents(T contents) {
+        this.contents = contents;
+    } // setContents
+
+    public GenList.Node getNext() {
+        return next;
+    } // getNext
+
+    public void setNext(GenList.Node next) {
+        this.next = next;
+    } // setNext
+
+} // GenList.Node

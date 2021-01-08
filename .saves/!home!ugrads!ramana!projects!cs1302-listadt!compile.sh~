@@ -1,0 +1,12 @@
+#!/bin/bash -x
+javac -d bin -cp listadt.jar src/cs1302/list/AbstractStringList.java
+javac -d bin -cp listadt.jar:bin src/cs1302/list/ArrayStringList.java
+javac -d bin -cp listadt.jar:bin src/cs1302/list/LinkedStringList.java
+javac -d bin -cp bin:listadt.jar src/cs1302/list/Driver.java
+javac -d bin -cp bin:listadt.jar src/cs1302/list/DriverLinkedStringList.java
+javac -d bin -cp bin:listadt.jar src/cs1302/list/DriverArrayStringList.java
+javac -d bin -cp bin:listadt.jar src/cs1302/list/Driver2.java
+java -cp bin:listadt.jar cs1302.list.Driver
+java -ea -cp bin:listadt.jar cs1302.list.DriverLinkedStringList
+java -ea -cp bin:listadt.jar cs1302.list.DriverArrayStringList
+java -cp bin:listadt.jar cs1302.list.Driver2

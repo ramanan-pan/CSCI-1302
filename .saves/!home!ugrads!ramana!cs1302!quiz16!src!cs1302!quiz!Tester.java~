@@ -1,0 +1,30 @@
+package cs1302.quiz;
+
+import cs1302.quiz.Testable;
+
+public class Tester {
+    public static <T> void printMatch(T[] objs, Testable<T> t) {
+        for (T obj : objs) {
+            if (t.test(obj)) {
+                System.out.println(obj);
+            } // if
+        } // for
+    } // printMatch
+
+    public static void main(String[] args) {
+        Integer[] a = new Integer[] { 4, 2, 1, 7, 3, 100};
+
+        System.out.println("1");
+        Testable<Integer> it = obj -> obj < 4;
+        Tester.<Integer>printMatch(a, it);
+        System.out.println("2");
+        Tester.<Integer>printMatch(a, obj -> obj > 55);
+        System.out.println("3");
+        Tester.printMatch(a, (Integer obj) -> (obj > 1) && (obj < 7));
+        System.out.println("4");
+        Testable<Integer> it2 = (obj) -> {
+            return obj == 1;
+        };
+        Tester.printMatch(a, it2);
+    } // main
+} // Tester

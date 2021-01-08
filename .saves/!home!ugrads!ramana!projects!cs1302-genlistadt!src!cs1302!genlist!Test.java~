@@ -1,0 +1,15 @@
+package cs1302.genlist;
+
+import cs1302.genlist.Node;
+
+
+public class Test {
+
+    public static void main(String[] args) {
+        Node node = new Node<String>("hello");
+        Object yes = node.getContents();
+
+        Object var = Node.<Object, Integer>quickCopy(new Node<Integer>(2));
+    } // main
+
+} // Test

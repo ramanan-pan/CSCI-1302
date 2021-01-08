@@ -1,0 +1,10 @@
+4
+BCDA 
+ABCD
+5
+BACD 
+AAAAA
+6
+BCDA 
+BACCCC 
+0 

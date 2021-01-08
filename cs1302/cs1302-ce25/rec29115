@@ -1,0 +1,75 @@
+cs1302-ce25:
+total 20
+-rwxr--r-- 1 ugrad   96 Apr 19 22:15 compile.sh
+-rw-r--r-- 1 ugrad 2657 Apr 19 18:51 pom.xml
+-rw-r--r-- 1 ugrad    0 Apr 19 22:46 rec29115
+drwxr-xr-x 3 ugrad 4096 Apr 19 18:51 src
+-rw-r--r-- 1 ugrad   90 Apr 19 22:37 SUBMISSION.md
+drwxr-xr-x 5 ugrad 4096 Apr 19 22:34 target
+
+cs1302-ce25/src:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 19 18:50 main
+
+cs1302-ce25/src/main:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 19 18:50 java
+
+cs1302-ce25/src/main/java:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 19 18:50 cs1302
+
+cs1302-ce25/src/main/java/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 19 22:34 ce25
+
+cs1302-ce25/src/main/java/cs1302/ce25:
+total 12
+-rw-r--r-- 1 ugrad 1072 Apr 19 19:12 Find.java
+-rw-r--r-- 1 ugrad 1859 Apr 19 22:34 ShrinkString.java
+-rw-r--r-- 1 ugrad 1839 Apr 19 21:53 Tree.java
+
+cs1302-ce25/target:
+total 12
+drwxr-xr-x 3 ugrad 4096 Apr 19 22:34 classes
+drwxr-xr-x 3 ugrad 4096 Apr 19 22:34 generated-sources
+drwxr-xr-x 3 ugrad 4096 Apr 19 22:34 maven-status
+
+cs1302-ce25/target/classes:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 19 22:34 cs1302
+
+cs1302-ce25/target/classes/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 19 22:34 ce25
+
+cs1302-ce25/target/classes/cs1302/ce25:
+total 12
+-rw-r--r-- 1 ugrad 2065 Apr 19 22:34 Find.class
+-rw-r--r-- 1 ugrad 1633 Apr 19 22:34 ShrinkString.class
+-rw-r--r-- 1 ugrad 2838 Apr 19 22:34 Tree.class
+
+cs1302-ce25/target/generated-sources:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 19 22:34 annotations
+
+cs1302-ce25/target/generated-sources/annotations:
+total 0
+
+cs1302-ce25/target/maven-status:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 19 22:34 maven-compiler-plugin
+
+cs1302-ce25/target/maven-status/maven-compiler-plugin:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 19 22:34 compile
+
+cs1302-ce25/target/maven-status/maven-compiler-plugin/compile:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 19 22:34 default-compile
+
+cs1302-ce25/target/maven-status/maven-compiler-plugin/compile/default-compile:
+total 8
+-rw-r--r-- 1 ugrad  77 Apr 19 22:34 createdFiles.lst
+-rw-r--r-- 1 ugrad 233 Apr 19 22:34 inputFiles.lst
+/home/ugrads/ramana/cs1302/cs1302-ce25:/home/work/cs1302a

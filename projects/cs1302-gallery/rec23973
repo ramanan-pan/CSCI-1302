@@ -1,0 +1,116 @@
+cs1302-gallery/:
+total 76
+-rwxr--r-- 1 ugrad   139 Apr 27 19:33 compile.sh
+drwxr-xr-x 3 ugrad  4096 Apr 28 22:22 doc
+-rw-r--r-- 1 ugrad   245 Apr 28 21:14 EXTRA.md
+-rw-r--r-- 1 ugrad  2649 Apr 25 11:49 pom.xml
+-rw-r--r-- 1 ugrad 48446 Apr 25 11:49 README.md
+-rw-r--r-- 1 ugrad     0 Apr 28 22:30 rec23973
+drwxr-xr-x 2 ugrad  4096 Apr 28 20:55 resources
+drwxr-xr-x 3 ugrad  4096 Apr 25 11:49 src
+drwxr-xr-x 5 ugrad  4096 Apr 28 22:27 target
+
+cs1302-gallery/doc:
+total 76
+-rw-r--r-- 1 ugrad  1121 Apr 28 22:25 allclasses-frame.html
+-rw-r--r-- 1 ugrad  1021 Apr 28 22:25 allclasses-noframe.html
+-rw-r--r-- 1 ugrad  3565 Apr 28 22:25 constant-values.html
+drwxr-xr-x 3 ugrad  4096 Apr 28 22:22 cs1302
+-rw-r--r-- 1 ugrad  3515 Apr 28 22:25 deprecated-list.html
+-rw-r--r-- 1 ugrad  7950 Apr 28 22:25 help-doc.html
+-rw-r--r-- 1 ugrad 10488 Apr 28 22:25 index-all.html
+-rw-r--r-- 1 ugrad  2788 Apr 28 22:25 index.html
+-rw-r--r-- 1 ugrad  5181 Apr 28 22:25 overview-tree.html
+-rw-r--r-- 1 ugrad    15 Apr 28 22:25 package-list
+-rw-r--r-- 1 ugrad   827 Apr 28 22:25 script.js
+-rw-r--r-- 1 ugrad 12842 Apr 28 22:22 stylesheet.css
+
+cs1302-gallery/doc/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 28 22:22 gallery
+
+cs1302-gallery/doc/cs1302/gallery:
+total 108
+-rw-r--r-- 1 ugrad  9957 Apr 28 22:25 AboutStage.html
+-rw-r--r-- 1 ugrad 13889 Apr 28 22:25 GalleryApp.html
+-rw-r--r-- 1 ugrad  9045 Apr 28 22:25 GalleryDriver.html
+-rw-r--r-- 1 ugrad 20870 Apr 28 22:25 GalleryPane.html
+-rw-r--r-- 1 ugrad  1184 Apr 28 22:25 package-frame.html
+-rw-r--r-- 1 ugrad  5309 Apr 28 22:25 package-summary.html
+-rw-r--r-- 1 ugrad  5196 Apr 28 22:25 package-tree.html
+-rw-r--r-- 1 ugrad 20717 Apr 28 22:25 ToolBar.html
+
+cs1302-gallery/resources:
+total 140
+-rw-r--r-- 1 ugrad 139441 Apr 28 20:55 about.jpg
+
+cs1302-gallery/src:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 25 11:49 main
+
+cs1302-gallery/src/main:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 25 11:49 java
+
+cs1302-gallery/src/main/java:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 25 11:49 cs1302
+
+cs1302-gallery/src/main/java/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 28 22:24 gallery
+
+cs1302-gallery/src/main/java/cs1302/gallery:
+total 32
+-rw-r--r-- 1 ugrad 2071 Apr 28 22:17 AboutStage.java
+-rw-r--r-- 1 ugrad 4315 Apr 28 22:16 GalleryApp.java
+-rw-r--r-- 1 ugrad  790 Apr 25 11:49 GalleryDriver.java
+-rw-r--r-- 1 ugrad 1728 Apr 28 17:15 GalleryPane.java
+-rw-r--r-- 1 ugrad 9123 Apr 28 22:24 ToolBar.java
+
+cs1302-gallery/target:
+total 12
+drwxr-xr-x 3 ugrad 4096 Apr 28 22:27 classes
+drwxr-xr-x 3 ugrad 4096 Apr 28 22:27 generated-sources
+drwxr-xr-x 3 ugrad 4096 Apr 28 22:27 maven-status
+
+cs1302-gallery/target/classes:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 28 22:27 cs1302
+
+cs1302-gallery/target/classes/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 28 22:27 gallery
+
+cs1302-gallery/target/classes/cs1302/gallery:
+total 32
+-rw-r--r-- 1 ugrad 3055 Apr 28 22:27 AboutStage.class
+-rw-r--r-- 1 ugrad 5250 Apr 28 22:27 GalleryApp.class
+-rw-r--r-- 1 ugrad 1126 Apr 28 22:27 GalleryDriver.class
+-rw-r--r-- 1 ugrad 1224 Apr 28 22:27 GalleryPane.class
+-rw-r--r-- 1 ugrad 9842 Apr 28 22:27 ToolBar.class
+
+cs1302-gallery/target/generated-sources:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 28 22:27 annotations
+
+cs1302-gallery/target/generated-sources/annotations:
+total 0
+
+cs1302-gallery/target/maven-status:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 28 22:27 maven-compiler-plugin
+
+cs1302-gallery/target/maven-status/maven-compiler-plugin:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 28 22:27 compile
+
+cs1302-gallery/target/maven-status/maven-compiler-plugin/compile:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 28 22:27 default-compile
+
+cs1302-gallery/target/maven-status/maven-compiler-plugin/compile/default-compile:
+total 8
+-rw-r--r-- 1 ugrad 161 Apr 28 22:27 createdFiles.lst
+-rw-r--r-- 1 ugrad 446 Apr 28 22:27 inputFiles.lst
+/home/ugrads/ramana/projects/cs1302-gallery/:/home/work/cs1302a

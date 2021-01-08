@@ -1,0 +1,76 @@
+cs1302-ce27-ce28/:
+total 24
+-rw-r--r-- 1 ugrad 2600 Apr 26 19:35 NOTES.md
+-rw-r--r-- 1 ugrad 2670 Apr 26 15:02 pom.xml
+-rw-r--r-- 1 ugrad    0 Apr 26 19:39 rec28784
+-rw-r--r-- 1 ugrad 2104 Apr 26 16:34 rec64769
+drwxr-xr-x 3 ugrad 4096 Apr 26 15:01 src
+-rw-r--r-- 1 ugrad   92 Apr 26 16:33 SUBMISSION.md
+drwxr-xr-x 5 ugrad 4096 Apr 26 18:58 target
+
+cs1302-ce27-ce28/src:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 26 15:00 main
+
+cs1302-ce27-ce28/src/main:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 26 15:00 java
+
+cs1302-ce27-ce28/src/main/java:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 26 15:00 cs1302
+
+cs1302-ce27-ce28/src/main/java/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 26 19:20 sorting
+
+cs1302-ce27-ce28/src/main/java/cs1302/sorting:
+total 12
+-rw-r--r-- 1 ugrad 2729 Apr 26 16:59 BubbleSort.java
+-rw-r--r-- 1 ugrad 3105 Apr 26 19:20 QuickSort.java
+-rw-r--r-- 1 ugrad 2790 Apr 26 17:46 SelectionSort.java
+
+cs1302-ce27-ce28/target:
+total 12
+drwxr-xr-x 3 ugrad 4096 Apr 26 18:58 classes
+drwxr-xr-x 3 ugrad 4096 Apr 26 18:58 generated-sources
+drwxr-xr-x 3 ugrad 4096 Apr 26 18:58 maven-status
+
+cs1302-ce27-ce28/target/classes:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 26 18:58 cs1302
+
+cs1302-ce27-ce28/target/classes/cs1302:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 26 19:20 sorting
+
+cs1302-ce27-ce28/target/classes/cs1302/sorting:
+total 12
+-rw-r--r-- 1 ugrad 3257 Apr 26 19:20 BubbleSort.class
+-rw-r--r-- 1 ugrad 3498 Apr 26 19:20 QuickSort.class
+-rw-r--r-- 1 ugrad 3299 Apr 26 19:20 SelectionSort.class
+
+cs1302-ce27-ce28/target/generated-sources:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 26 18:58 annotations
+
+cs1302-ce27-ce28/target/generated-sources/annotations:
+total 0
+
+cs1302-ce27-ce28/target/maven-status:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 26 18:58 maven-compiler-plugin
+
+cs1302-ce27-ce28/target/maven-status/maven-compiler-plugin:
+total 4
+drwxr-xr-x 3 ugrad 4096 Apr 26 18:58 compile
+
+cs1302-ce27-ce28/target/maven-status/maven-compiler-plugin/compile:
+total 4
+drwxr-xr-x 2 ugrad 4096 Apr 26 18:58 default-compile
+
+cs1302-ce27-ce28/target/maven-status/maven-compiler-plugin/compile/default-compile:
+total 8
+-rw-r--r-- 1 ugrad  98 Apr 26 19:20 createdFiles.lst
+-rw-r--r-- 1 ugrad 269 Apr 26 18:58 inputFiles.lst
+/home/ugrads/ramana/cs1302/cs1302-ce27-ce28/:/home/work/cs1302a

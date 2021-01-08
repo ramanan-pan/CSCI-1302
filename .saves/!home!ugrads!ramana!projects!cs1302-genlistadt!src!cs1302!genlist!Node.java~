@@ -1,0 +1,84 @@
+package cs1302.genlist;
+
+/**
+ * Represents a node in a singley linked {@code GenList} implementation.
+ */
+public class Node<T> {
+
+    /** a reference to an associated T object.*/
+    private T contents;
+
+    /** a reference to another Node&lt;T&gt; object.*/
+    private Node<T> next;
+
+    /**
+     * Constructs a new node with all properties unset.
+     */
+    public Node() {
+        contents = null;
+        next = null;
+    } // GenList.Node
+
+    /**
+     * Constructs a new node with the {@code contents} property set
+     * and the {@code next} property unset.
+     *
+     * @param contents reference to the associated contents
+     */
+    public Node(T contents) {
+        this.contents = contents;
+        next = null;
+    } // GenList.Node
+
+    /**
+     * Constructs a new node with the {@code contents}
+     * and {@code next} properties set.
+     *
+     * @param contents reference to the associated contents
+     * @param next reference to the next node
+     */
+    public Node(T contents, Node<T> next) {
+        this.contents = contents;
+        this.next = next;
+    } // GenList.Node
+
+    /**
+     * Returns the value of the {@code contents} property for this node.
+     *
+     * @return reference to the associated contents
+     */
+    public T getContents() {
+        return contents;
+    } // getContents
+
+    /**
+     * Sets the value of the {@code contents} property for this node.
+     *
+     * @param contents reference to the associated contents
+     */
+    public void setContents(T contents) {
+        this.contents = contents;
+    } // setContents
+
+    /**
+     * Returns the value of the {@code next} property for this node.
+     *
+     * @return reference to the next node
+     */
+    public Node<T> getNext() {
+        return next;
+    } // getNext
+
+    /**
+     * Sets the value of the {@code next} property for this node.
+     *
+     * @param next reference to the next node
+     */
+    public void setNext(Node<T> next) {
+        this.next = next;
+    } // setNext
+
+    public static <U, V extends U> Node<U> quickCopy(Node<V> o) {
+        return new Node<U>(o.getContents());
+    } // quickCopy
+} // GenList.Node

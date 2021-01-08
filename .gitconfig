@@ -1,0 +1,5 @@
+[user]
+	name = Ramanan Pannirselvam
+	email = rp60721@uga.edu
+[alias]
+	adog = log --all --decorate --oneline --graph
